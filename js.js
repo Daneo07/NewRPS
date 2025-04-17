@@ -14,6 +14,8 @@ getCompChoice();
 
 const pChoice = ["rock","paper","scissors"];
 
+document.getElementById('rock').addEventListener('click',oneRound)
+
 
 
 
