@@ -9,12 +9,34 @@ function getCompChoice(){
 getCompChoice();
 
 
-/*Player Choice*/
+/*Player Choice Using the UI*/
+
+const playerDisplay = document.getElementById('playerDisplay');
+const computerDisplay = document.getElementById('computerDisplay');
+const resultDisplay = docuemnt.getElementById('resultDisplay')
 
 
-const pChoice = ["rock","paper","scissors"];
 
-document.getElementById('rock').addEventListener('click',oneRound)
+
+
+
+const buttons = document.getElementsByClassName('buttons');
+
+
+
+for(i of buttons){
+i.addEventListener('click',function(e){
+    let pChoice = e.srcElement.value;
+    oneRound(pChoice)
+}
+)
+}
+
+
+
+
+
+ 
 
 
 
@@ -26,6 +48,7 @@ document.getElementById('rock').addEventListener('click',oneRound)
 
 
 function oneRound(pChoice,compChoice){
+    
     const result = checkWinner(pChoice,compChoice);
         if (result == "Tie"){
             return "Its a tie"
@@ -40,7 +63,8 @@ function oneRound(pChoice,compChoice){
     
     
     
-    function checkWinner(pChoice,compChoice){
+    function checkWinner(pChoice){
+        const compChoice = options[Math.floor(Math.random() * options.length)];
         if (pChoice == compChoice){
             return "Tie";
         } else if (
@@ -54,7 +78,7 @@ function oneRound(pChoice,compChoice){
         }
     }
     
-    
+    playerDisplay.textContent = `Player: ${playerChoice}`
 
 
     function game(){
